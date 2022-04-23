@@ -1,0 +1,47 @@
+#include <stdio.h>
+void SapXepMang(int n,int arr[n]){
+    int temp = 0;
+    for(int i = 0; i < n;i++){
+        for(int j = i ; j < n ; j++){
+            if(arr[i]<arr[j]){
+                temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+}
+void ChuyenMang1Chieu(int n,int m,int arr[n][m],int arr2[n*m]){
+    for(int i = 0; i < n;i++){
+        for(int j = 0; j <m ; j++){
+            arr2[i*m+j]=arr[i][j];
+        }
+    }
+}
+void ChuyenMang2Chieu(int n,int m,int arr2[n*m]){
+    printf("Mang sau khi  sap xep: \n");
+    for(int i = 0; i < n;i++){
+        for(int j = 0; j <m ; j++){
+            printf("%d\t",arr2[i*m+j]);
+        }
+        printf("\n");
+    }
+}
+int main(){
+    int n,m;
+    printf("Nhap kich thuoc cua mang: ");
+    scanf("%d%d",&n,&m);
+    int arr[n][m];
+    int arr2[n*m];
+    printf("Nhap cac gia tri cua mang: ");
+    for(int i = 0; i < n;i++){
+        for(int j = 0; j <m ; j++){
+            scanf("%d",&arr[i][j]);
+            printf("%d\t",arr[i][j]);
+        }
+        printf("\n");
+    }
+    ChuyenMang1Chieu(n,m,arr,arr2);
+    SapXepMang(n*m,arr2);
+    ChuyenMang2Chieu(n,m,arr2);
+}
